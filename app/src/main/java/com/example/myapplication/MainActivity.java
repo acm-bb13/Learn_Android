@@ -47,11 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-
-        //测试提交
-        System.out.println("test");
         
-
         //当本活动销毁时
         super.onDestroy();
 
