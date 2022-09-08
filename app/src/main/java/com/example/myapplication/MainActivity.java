@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        
+
         //当本活动销毁时
         super.onDestroy();
 
