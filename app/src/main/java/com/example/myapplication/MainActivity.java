@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
+            //根据网络状态弹出Toast提示框
             if(networkInfo != null && networkInfo.isAvailable()){
                 Toast.makeText(context , "网络正常" , Toast.LENGTH_SHORT).show();
             }else {
@@ -74,8 +75,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
+                //新版本的广播需要指定包名
+                intent.setPackage(getPackageName());
                 sendBroadcast(intent);
-                Log.d(TAG, "onClick: Test1");
             }
         });
     }
