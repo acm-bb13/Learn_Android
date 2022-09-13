@@ -77,7 +77,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
                 //新版本的广播需要指定包名
                 intent.setPackage(getPackageName());
-                sendBroadcast(intent);
+
+                //发送有序广播
+                sendOrderedBroadcast(intent , null);
+
+                //发送标准广播
+                //sendBroadcast(intent);
             }
         });
     }

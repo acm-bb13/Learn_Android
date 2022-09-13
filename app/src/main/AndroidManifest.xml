@@ -4,7 +4,9 @@
     package="com.example.myapplication">
 
     <!-- 申请访问系统网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 申请接收权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 申请接收权限 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -17,46 +19,56 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-        <!-- 自动生成了receiver标签，所有静态广播接收器都是在这里注册的 -->
+
+        <!--有序广播测试-->
         <receiver
-            android:name=".BootCompleteReceiver"
+            android:name=".AnotherBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+            <intent-filter  android:priority="100">
+                <action android:name="com.example.broadcasttest.MY_BROADCAST" />
             </intent-filter>
         </receiver>
 
+
+
+
+        <!-- 自定义广播接收器 -->
+        <receiver
+            android:name=".MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="1">
+                <action android:name="com.example.broadcasttest.MY_BROADCAST" />
+            </intent-filter>
+        </receiver>
+
+
+        <!--第二活动注册-->
         <activity
             android:name=".SecondActivity"
             android:exported="true">
             <intent-filter>
+                <!--用于唤醒活动-->
                 <action android:name="com.example.activitytest.ACTION_START" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.example.activitytest.MY_CATEGORY" />
             </intent-filter>
         </activity>
+
+
+        <!--主活动注册-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="This is FirstActivity">
             <intent-filter>
+                <!--标识为主活动-->
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--自定义广播接收器-->
-        <receiver
-            android:name=".MyBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.example.broadcasttest.MY_BROADCAST" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

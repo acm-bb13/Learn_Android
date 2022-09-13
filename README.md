@@ -19,6 +19,35 @@ git config commit.template ./commit.template
 
 
 
+### 9月13日 有序广播demo
+
+跟标准广播一致，只需要更改有序广播的发送方式：
+
+```java
+Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
+
+//新版本的广播需要指定包名
+intent.setPackage(getPackageName());
+
+//发送有序广播
+sendOrderedBroadcast(intent , null);
+
+//发送标准广播
+//sendBroadcast(intent);
+```
+
+
+
+然后要注意，有序广播有优先级。
+
+```java
+<intent-filter  android:priority="100">
+```
+
+
+
+
+
 ### 9月9日 广播效果成功更新
 
 可以注意到，Android新版本对广播进行了限制。新版本的广播需要指定包名。
