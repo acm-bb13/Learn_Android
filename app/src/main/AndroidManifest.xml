@@ -20,42 +20,6 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
 
-        <!--有序广播测试-->
-        <receiver
-            android:name=".AnotherBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter  android:priority="100">
-                <action android:name="com.example.broadcasttest.MY_BROADCAST" />
-            </intent-filter>
-        </receiver>
-
-
-
-
-        <!-- 自定义广播接收器 -->
-        <receiver
-            android:name=".MyBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter android:priority="1">
-                <action android:name="com.example.broadcasttest.MY_BROADCAST" />
-            </intent-filter>
-        </receiver>
-
-
-        <!--第二活动注册-->
-        <activity
-            android:name=".SecondActivity"
-            android:exported="true">
-            <intent-filter>
-                <!--用于唤醒活动-->
-                <action android:name="com.example.activitytest.ACTION_START" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.example.activitytest.MY_CATEGORY" />
-            </intent-filter>
-        </activity>
-
 
         <!--主活动注册-->
         <activity
