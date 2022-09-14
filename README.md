@@ -4,10 +4,9 @@
 
 
 
-## 标题：新增提交模板
+## 提交模板
 
-修改项：将模板加入到项目当中
-备注：如果默认备注无效，可以尝试
+将模板加入到项目当中
 
 ```bash
 git config commit.template ./commit.template
@@ -17,7 +16,31 @@ git config commit.template ./commit.template
 
 ## 日志
 
+### 9月14日 实现强制下线功能Demo
+
+```xml
+git checkout v0.4
+```
+
+这个Demo的基本原理。
+
+该活动为了实现所有页面收到广播后都会弹出强制下线的对话框，
+
+编写了一个基类让所有的活动都继承它，然后再在这个基类活动里，
+
+写了一个监听器接收广播，只有当该活动为最前台时才会生效。
+
+然后写了一个管理类ActivityCollector，用来记录所有创建的活动并
+
+提供了一个将所有活动结束的方法。
+
+
+
 ### 9月13日 使用本地广播Demo
+
+```xml
+git checkout v0.3
+```
 
 - 可以明确的知道发送的广播不会离开我们的程序，因此不必担心机密数据泄漏。
 - 其他程序也无法将广播发送到我们程序内部，因此不用担心会有安全漏洞的隐患。
@@ -31,6 +54,10 @@ git config commit.template ./commit.template
 
 
 ### 9月13日 有序广播demo
+
+```xml
+git checkout v0.2
+```
 
 跟标准广播一致，只需要更改有序广播的发送方式：
 
@@ -57,9 +84,11 @@ sendOrderedBroadcast(intent , null);
 
 
 
-
-
 ### 9月9日 广播效果成功更新
+
+```xml
+git checkout v0.1
+```
 
 可以注意到，Android新版本对广播进行了限制。新版本的广播需要指定包名。
 

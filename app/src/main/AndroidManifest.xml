@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
-    <!-- 申请访问系统网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- 申请接收权限 -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,18 +14,26 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
 
-
-        <!--主活动注册-->
+        <!-- 登录活动页面注册 -->
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true"
-            android:label="This is FirstActivity">
+            android:label="登录页面">
             <intent-filter>
-                <!--标识为主活动-->
+                <!-- 标识为主活动 -->
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <!-- 主活动注册 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="用户主页面">
+        </activity>
+
 
     </application>
 
