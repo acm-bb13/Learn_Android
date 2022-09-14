@@ -4,12 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--编辑文本-->
-    <EditText
+    <!--保存按钮-->
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit"
-        android:hint="Type something here"
+        android:id="@+id/save_data"
+        android:text="Save data"
+        />
+
+    <!--读取按钮-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/restore_data"
+        android:text="Restore data"
         />
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -34,12 +35,11 @@ import java.io.OutputStreamWriter;
 
 public class MainActivity extends AppCompatActivity {
     /*
-        本活动主要实现了将文本框中的内容保存，并在活动重新打开时读取出来
+        本活动主要是通过两个按钮，将数据保存，并以log的形式读取后输出
      */
 
     private static final String TAG = "MainActivity";
 
-    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,19 +47,34 @@ public class MainActivity extends AppCompatActivity {
         //设置first_layout为当前布局
         setContentView(R.layout.first_layout);
 
-        //绑定文本框
-        editText = (EditText) findViewById(R.id.edit);
+        //写入按钮
+        Button saveData = (Button) findViewById(R.id.save_data);
+        saveData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = getSharedPreferences("data" , MODE_PRIVATE).edit();
+                editor.putString("name" , "Tom");
+                editor.putInt("age" , 28);
+                editor.putBoolean("married" , true);
+                editor.apply();
+            }
+        });
 
-        //读取数据
-        String inputText = load();
-        if(!TextUtils.isEmpty(inputText)){
-            //当读取到的数据不为空时，将文本框中的文字替换为读取的内容
-            editText.setText(inputText);
-            editText.setSelection(inputText.length());
+        //读取按钮
+        Button restoreData = (Button) findViewById(R.id.restore_data);
+        restoreData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pref = getSharedPreferences("data" , MODE_PRIVATE);
+                String name = pref.getString("name" , "");
+                int age = pref.getInt("age" ,0);
+                boolean married = pref.getBoolean("married" , false);
+                Log.d(TAG, "onClick: name is " + name);
+                Log.d(TAG, "onClick: age is " + age);
+                Log.d(TAG, "onClick: married is " + married);
+            }
+        });
 
-            //提示读取成功
-            Toast.makeText(this , "Restoring succeeded" , Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -67,57 +82,6 @@ public class MainActivity extends AppCompatActivity {
         //当本活动销毁时
         super.onDestroy();
 
-        //当活动被销毁时，保存数据
-        String inputText = editText.getText().toString();
-        save(inputText);
     }
 
-
-    public void save(String inputText){
-        //保存数据，通过Java传统方式
-        FileOutputStream out = null;
-        BufferedWriter writer = null;
-        try{
-            out = openFileOutput("data" , Context.MODE_PRIVATE);
-            writer = new BufferedWriter(new OutputStreamWriter(out));
-            writer.write(inputText);
-        }catch (IOException e){
-            e.printStackTrace();
-        }finally {
-            try {
-                if (writer != null){
-                    writer.close();
-                }
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public String load(){
-        //读取数据，通过Java传统方式
-        FileInputStream in = null;
-        BufferedReader reader = null;
-        StringBuilder content = new StringBuilder();
-
-        try {
-            in = openFileInput("data");
-            reader = new BufferedReader(new InputStreamReader(in));
-            String line = "";
-            while ((line = reader.readLine())!= null){
-                content.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            if(reader != null){
-                try {
-                    reader.close();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-        return content.toString();
-    }
 }

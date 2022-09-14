@@ -16,6 +16,18 @@ git config commit.template ./commit.template
 
 ## 日志
 
+### 9月14日 从SharedPreferences中写入读取数据
+
+```bash
+git checkout v0.6
+```
+
+从SharedPreferences保存的数据，是以键值对的形式保存的，并且支持多种类型的数据，存储的是字符串，那么读出来的也将是字符串。
+
+本次主要是实现了关于SharedPreferences的写入读取
+
+
+
 ### 9月14日 文件存储Demo
 
 ```bash
