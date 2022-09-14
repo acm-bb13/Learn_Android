@@ -16,9 +16,49 @@ git config commit.template ./commit.template
 
 ## 日志
 
+### 9月14日 使用SharedPreferences实现记住密码功能Demo
+
+```bash
+git checkout v0.7
+```
+
+这里是基于v0.4版本的升级，将该登录页面加入了一个记住密码的功能。
+
+
+
+### 9月14日 从SharedPreferences中写入读取数据
+
+```bash
+git checkout v0.6
+```
+
+从SharedPreferences保存的数据，是以键值对的形式保存的，并且支持多种类型的数据，存储的是字符串，那么读出来的也将是字符串。
+
+本次主要是实现了关于SharedPreferences的写入读取
+
+
+
+### 9月14日 文件存储Demo
+
+```bash
+git checkout v0.5
+```
+
+比较传统的Java的存储文件方式。只适合存储一些简单的数据或者二进制数据。
+
+注意这里指定文件名不可以包含路径，因为所有的文件都是默认存储到
+
+```
+/data/data/<package name>/files/
+```
+
+目录下的。
+
+
+
 ### 9月14日 实现强制下线功能Demo
 
-```xml
+```bash
 git checkout v0.4
 ```
 
@@ -38,7 +78,7 @@ git checkout v0.4
 
 ### 9月13日 使用本地广播Demo
 
-```xml
+```bash
 git checkout v0.3
 ```
 
@@ -55,7 +95,7 @@ git checkout v0.3
 
 ### 9月13日 有序广播demo
 
-```xml
+```bash
 git checkout v0.2
 ```
 
@@ -86,7 +126,7 @@ sendOrderedBroadcast(intent , null);
 
 ### 9月9日 广播效果成功更新
 
-```xml
+```bash
 git checkout v0.1
 ```
 
