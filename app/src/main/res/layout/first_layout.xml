@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <!--编辑文本-->
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/force_offline"
-        android:text="强制离线\nSend force offline broadcast"
-        android:textAllCaps="false"
+        android:id="@+id/edit"
+        android:hint="Type something here"
         />
 
 </LinearLayout>
