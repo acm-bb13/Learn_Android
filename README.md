@@ -16,6 +16,16 @@ git config commit.template ./commit.template
 
 ## 日志
 
+### 9月14日 使用SharedPreferences实现记住密码功能Demo
+
+```bash
+git checkout v0.7
+```
+
+这里是基于v0.4版本的升级，将该登录页面加入了一个记住密码的功能。
+
+
+
 ### 9月14日 从SharedPreferences中写入读取数据
 
 ```bash
