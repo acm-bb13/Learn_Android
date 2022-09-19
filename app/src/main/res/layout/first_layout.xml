@@ -4,20 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--保存按钮-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/save_data"
-        android:text="Save data"
+        android:id="@+id/create_database"
+        android:text="创建数据库\nCreate Database"
+        android:textAllCaps="false"
         />
 
-    <!--读取按钮-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/restore_data"
-        android:text="Restore data"
+        android:id="@+id/add_data"
+        android:text="增加数据\nAdd Data"
+        android:textAllCaps="false"
         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/updata_data"
+        android:text="更新数据\nUpdata Data"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_data"
+        android:text="删除数据\nDelete Data"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/query_data"
+        android:text="查询数据\nQuery Data"
+        android:textAllCaps="false"
+        />
+
 
 </LinearLayout>

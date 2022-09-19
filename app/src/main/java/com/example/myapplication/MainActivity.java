@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    private MyDatabaseHelper dbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,33 +49,22 @@ public class MainActivity extends AppCompatActivity {
         //设置first_layout为当前布局
         setContentView(R.layout.first_layout);
 
-        //写入按钮
-        Button saveData = (Button) findViewById(R.id.save_data);
-        saveData.setOnClickListener(new View.OnClickListener() {
+        //初始化数据库
+        dbHelper = new MyDatabaseHelper(this , "BookStore.db" , null , 1);
+
+        //创建数据库
+        Button createDatabase = (Button) findViewById(R.id.create_database);
+        createDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getSharedPreferences("data" , MODE_PRIVATE).edit();
-                editor.putString("name" , "Tom");
-                editor.putInt("age" , 28);
-                editor.putBoolean("married" , true);
-                editor.apply();
+                dbHelper.getWritableDatabase();
             }
         });
 
-        //读取按钮
-        Button restoreData = (Button) findViewById(R.id.restore_data);
-        restoreData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences pref = getSharedPreferences("data" , MODE_PRIVATE);
-                String name = pref.getString("name" , "");
-                int age = pref.getInt("age" ,0);
-                boolean married = pref.getBoolean("married" , false);
-                Log.d(TAG, "onClick: name is " + name);
-                Log.d(TAG, "onClick: age is " + age);
-                Log.d(TAG, "onClick: married is " + married);
-            }
-        });
+        //增加数据
+
+
+
 
     }
 
